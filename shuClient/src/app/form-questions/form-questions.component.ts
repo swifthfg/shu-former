@@ -46,20 +46,23 @@ export class FormQuestionsComponent implements OnInit {
     let token = this.data.getToken();
     let resObject = {fields: [], shuToken: null, ipMeta: 'ipmetaedfsd13'};
     resObject.shuToken = token ? token : uuid();
+    this.data.saveToken(resObject.shuToken);
 
     for (let i = 0; i < this.allQuestions.length; i++) {
       let question = this.allQuestions[i];
       if (question.userScore === null) {
-        console.log('Form field cannot be empty');
+        this.isPageLoaded = true;
+        alert('All questions must be answered!');
         return;
       }
       resObject.fields.push({fieldName: question.fieldName, score: question.userScore});
     }
+
     const data = await this.rest.post(this.data.url + 'submission/create', resObject);
     if (data['success']) {
       this.data.formResult = data['result'];
-      this.router.navigate(['form-result']);
       this.isPageLoaded = true;
+      this.router.navigate(['form-result']);
     } else {
       this.isPageLoaded = true;
       console.log('Something went wrong');

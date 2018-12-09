@@ -12,4 +12,8 @@ export class DataService {
   getToken() {
     return localStorage.getItem('shuToken');
   }
+
+  saveToken(token: string) {
+    localStorage.setItem('shuToken', token);
+  }
 }

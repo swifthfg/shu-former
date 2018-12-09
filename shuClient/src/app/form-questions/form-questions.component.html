@@ -1,7 +1,6 @@
 <div class="row">
-  <div *ngIf="!isPageLoaded" class="loader">
-    Fetching questions...
-  </div>
+  <div *ngIf="!isPageLoaded" class="loader"></div>
+
   <div *ngIf="isPageLoaded" class="col-sm-12">
     <div *ngFor="let question of allQuestions" class="card text-center">
       <div class="card-body">
