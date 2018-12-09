@@ -1,0 +1,50 @@
+{"questions": [
+  {
+    "maxScore": 2,
+    "createdAt": "2018-12-09T08:45:48.233Z",
+    "_id": "5c0cd641476b04202d9f44d0",
+    "questionText": "I have experienced a home invasion or attempted home invasion of a residence.",
+    "description": "description of q1",
+    "fieldName": "field1"
+  },
+  {
+    "maxScore": 5,
+    "createdAt": "2018-12-09T08:45:48.233Z",
+    "_id": "5c0cd731476b04202d9f44d2",
+    "questionText": "I feel that the number and frequency of home invasions is increasing.",
+    "description": "description of q12",
+    "fieldName": "field2"
+  },
+  {
+    "maxScore": 5,
+    "createdAt": "2018-12-09T08:45:48.233Z",
+    "_id": "5c0cd755476b04202d9f44d3",
+    "questionText": "It's possible that I may be threatened in my home.",
+    "description": "description of q3",
+    "fieldName": "field3"
+  },
+  {
+    "maxScore": 5,
+    "createdAt": "2018-12-09T08:45:48.233Z",
+    "_id": "5c0cd76e476b04202d9f44d4",
+    "questionText": "I feel safe living in my neighborhood.",
+    "description": "description of q4",
+    "fieldName": "field4"
+  },
+  {
+    "maxScore": 5,
+    "createdAt": "2018-12-09T08:45:48.233Z",
+    "_id": "5c0cd78c476b04202d9f44d5",
+    "questionText": "I feel that home invasions are a significant factor for worry compared to other crimes.",
+    "description": "description of q5",
+    "fieldName": "field5"
+  },
+  {
+    "maxScore": 5,
+    "createdAt": "2018-12-09T08:45:48.233Z",
+    "_id": "5c0cd7c9476b04202d9f44d6",
+    "questionText": "Hearing about a home invasion or burglary makes me feel fearful",
+    "description": "description of q6",
+    "fieldName": "field6"
+  }
+]}
