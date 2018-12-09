@@ -68,7 +68,7 @@ router.post('/submission/create',
                 });
             } else {
                 res.send({
-                    result: formSubmission,
+                    result: formSubmission.overAllScore, // return score to user
                     success: true,
                     message: 'Form submission is created',
                 });
@@ -77,7 +77,24 @@ router.post('/submission/create',
     }
 );
 
-
-
+router.get('/submission/get-all',
+    (req, res, next) => {
+        FormSubmission.find({}, function (err, submissions) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({
+                    success: false,
+                    message: 'Database connection error! Could not get the submissions.'
+                });
+            } else {
+                res.send({
+                    success: true,
+                    message: 'Submissions are fetched successfully',
+                    result: submissions
+                });
+            }
+        });
+    }
+);
 
 module.exports = router;
