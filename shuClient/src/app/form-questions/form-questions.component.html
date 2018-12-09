@@ -1,14 +1,20 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div *ngIf="!isPageLoaded" class="loader">
+    Fetching questions...
+  </div>
+  <div *ngIf="isPageLoaded" class="col-sm-12">
     <div *ngFor="let question of allQuestions" class="card text-center">
       <div class="card-body">
         <h5 class="card-title"><strong>{{question.questionText}}</strong></h5>
         <div>
-          <mat-radio-group>
+          <mat-radio-group [(ngModel)]="question.userScore">
             <mat-radio-button *ngFor="let score of question.numbers" value="{{score}}">{{score}}</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="isPageLoaded" class="col-sm-12 pb-5">
+    <button type="button" class="btn btn-lg btn-danger btn-block" (click)="onSubmit()">Submit</button>
   </div>
 </div>
