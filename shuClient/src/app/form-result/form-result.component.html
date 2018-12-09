@@ -1,3 +1,15 @@
-<p>
-  form-result works!
-</p>
+<div class="row">
+  <div *ngIf="!isPageLoaded" class="loader"></div>
+
+  <div *ngIf="isPageLoaded" class="col-sm-12 text-center">
+    <h3>Your overall score: {{formResult.overAllScore}}</h3>
+  </div>
+  <div *ngIf="isPageLoaded" class="col-sm-12 text-center">
+    <h3>Your answers to the questions:</h3>
+    <ul>
+      <li *ngFor="let answer of formResult.fields">
+        {{answer.fieldName}}: <span class="text-danger">{{answer.score}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -44,7 +44,7 @@ export class FormQuestionsComponent implements OnInit {
   async onSubmit() {
     this.isPageLoaded = false;
     let token = this.data.getToken();
-    let resObject = {fields: [], shuToken: null, ipMeta: 'ipmetaedfsd13'};
+    let resObject = {fields: [], shuToken: null};
     resObject.shuToken = token ? token : uuid();
     this.data.saveToken(resObject.shuToken);
 

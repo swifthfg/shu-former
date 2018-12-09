@@ -55,22 +55,40 @@ router.post('/submission/create',
         let formSubmission = new FormSubmission();
         let reqBody = req.body;
         formSubmission.fields = reqBody.fields;
-        formSubmission.ipMeta = reqBody.ipMeta;
+        formSubmission.ipMeta = req.headers['user-agent'];
         formSubmission.shuToken = reqBody.shuToken;
         formSubmission.fieldName = reqBody.fieldName;
 
-        formSubmission.save(function (err) {
+        FormSubmission.findOneAndUpdate({shuToken: formSubmission.shuToken}, {$set: {fields: reqBody.fields}}, {new: true}, function (err, existingSubmission) {
             if (err) {
                 console.log(err);
                 res.status(500).send({
-                   success:false,
-                   message: err.message
+                    success:false,
+                    message: err.message
                 });
-            } else {
+            }
+            else if (existingSubmission) {
                 res.send({
-                    result: formSubmission.overAllScore, // return score to user
+                    result: {overAllScore: existingSubmission.overAllScore, fields: existingSubmission.fields},
                     success: true,
                     message: 'Form submission is created',
+                });
+            } else {
+                formSubmission.save(function (err) {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send({
+                            success:false,
+                            message: err.message
+                        });
+                    } else {
+                        res.send({
+                            result: {overAllScore: formSubmission.overAllScore, fields: formSubmission.fields},
+                            // score to user
+                            success: true,
+                            message: 'Form submission is created',
+                        });
+                    }
                 });
             }
         });
@@ -92,6 +110,33 @@ router.get('/submission/get-all',
                     message: 'Submissions are fetched successfully',
                     result: submissions
                 });
+            }
+        });
+    }
+);
+
+router.post('/submission/get-by-token',
+    (req, res, next) => {
+        FormSubmission.findOne({shuToken: req.body.shuToken}, function (err, submission) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({
+                    success: false,
+                    message: 'Database connection error! Could not get the submission!'
+                });
+            } else {
+                if (submission) {
+                    res.send({
+                        success: true,
+                        message: 'Submissions are fetched successfully',
+                        result: submission
+                    });
+                } else {
+                    res.status(500).send({
+                        success: false,
+                        message: 'There is no submission with sent token',
+                    });
+                }
             }
         });
     }
