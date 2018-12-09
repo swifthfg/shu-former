@@ -12,11 +12,20 @@ router.post('/question/create',
         formQuestion.maxScore = reqBody.maxScore;
         formQuestion.fieldName = reqBody.fieldName;
 
-        formQuestion.save();
-        res.send({
-            result: formQuestion,
-            success: true,
-            message: 'New form question is created',
+        formQuestion.save(function (err) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({
+                    success: false,
+                    message: 'New form question could not be created',
+                });
+            } else {
+                res.send({
+                    result: formQuestion,
+                    success: true,
+                    message: 'New form question is created',
+                });
+            }
         });
     }
 );
@@ -50,11 +59,20 @@ router.post('/submission/create',
         formSubmission.shuToken = reqBody.shuToken;
         formSubmission.fieldName = reqBody.fieldName;
 
-        formSubmission.save();
-        res.send({
-            result: formSubmission,
-            success: true,
-            message: 'Form submission is created',
+        formSubmission.save(function (err) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({
+                   success:false,
+                   message: err.message
+                });
+            } else {
+                res.send({
+                    result: formSubmission,
+                    success: true,
+                    message: 'Form submission is created',
+                });
+            }
         });
     }
 );
