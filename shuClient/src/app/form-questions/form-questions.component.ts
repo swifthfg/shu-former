@@ -60,6 +60,9 @@ export class FormQuestionsComponent implements OnInit {
 
     const data = await this.rest.post(this.data.url + 'submission/create', resObject);
     if (data['success']) {
+      if (data['code'] && data['code'] === 600) {
+        alert('You have already submitted form before. Your previous form result is shown below.');
+      }
       this.data.formResult = data['result'];
       this.isPageLoaded = true;
       this.router.navigate(['form-result']);

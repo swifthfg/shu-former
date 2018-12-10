@@ -59,7 +59,7 @@ router.post('/submission/create',
         formSubmission.shuToken = reqBody.shuToken;
         formSubmission.fieldName = reqBody.fieldName;
 
-        FormSubmission.findOneAndUpdate({shuToken: formSubmission.shuToken}, {$set: {fields: reqBody.fields}}, {new: true}, function (err, existingSubmission) {
+        FormSubmission.findOne({shuToken: formSubmission.shuToken}, function (err, existingSubmission) {
             if (err) {
                 console.log(err);
                 res.status(500).send({
@@ -69,9 +69,10 @@ router.post('/submission/create',
             }
             else if (existingSubmission) {
                 res.send({
+                    code: 600,
                     result: {overAllScore: existingSubmission.overAllScore, fields: existingSubmission.fields},
                     success: true,
-                    message: 'Form submission is created',
+                    message: 'You already submitted form before',
                 });
             } else {
                 formSubmission.save(function (err) {
@@ -84,7 +85,6 @@ router.post('/submission/create',
                     } else {
                         res.send({
                             result: {overAllScore: formSubmission.overAllScore, fields: formSubmission.fields},
-                            // score to user
                             success: true,
                             message: 'Form submission is created',
                         });
