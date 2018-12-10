@@ -25,7 +25,7 @@ export class FormQuestionsComponent implements OnInit {
       if (data['success']) {
         this.allQuestions = data['result'];
         for (let i = 0; i < this.allQuestions.length; i++) {
-          let tempMaxScore = this.allQuestions[i].maxScore;
+          const tempMaxScore = this.allQuestions[i].maxScore;
           this.allQuestions[i].numbers = Array(tempMaxScore).fill(0).map((x,i)=>i);
           this.allQuestions[i].userScore = null;
         }
