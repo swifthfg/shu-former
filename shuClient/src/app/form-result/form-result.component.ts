@@ -23,7 +23,6 @@ export class FormResultComponent implements OnInit {
     if (this.data.isUserSubmittedFormBefore()) {
       try {
         const data = await this.rest.post(this.data.url + 'submission/get-by-token', {shuToken: this.data.getToken()});
-        console.log(data);
         if (data['success']) {
           this.formResult = data['result'];
           this.isPageLoaded = true;
