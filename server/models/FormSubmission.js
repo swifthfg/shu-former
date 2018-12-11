@@ -33,7 +33,7 @@ FormSubmissionSchema.pre('save', function(next) {
            if (matchingFieldCount != questions.length) {
                return next(new Error("Field is missing in submitted form"));
            }
-           this.overAllScore = overAllScore;
+           formSubmission.overAllScore = overAllScore;
            next();
        }
     });
