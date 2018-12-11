@@ -1,5 +1,5 @@
 <div class="row">
   <div class="col-sm-12">
-    <button type="button" class="btn btn-success btn-lg btn-block" [routerLink]="'form'">Questions</button>
+    <button *ngIf="showQuestionButton" type="button" class="btn btn-success btn-lg btn-block" [routerLink]="'form'">Questions</button>
   </div>
 </div>
