@@ -2,17 +2,17 @@
   <div *ngIf="!isPageLoaded" class="loader"></div>
 
   <div *ngIf="isPageLoaded" class="col-sm-12 text-center">
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-info" role="alert">
       <h4 class="alert-heading">Well done!</h4>
       <p>You successfully completed this very important survey.</p>
       <hr>
-      <p class="mb-0 text-primary">Your overall score: <strong>{{formResult.overAllScore}}</strong></p>
+      <h3 class="mb-0 ">Your Overall Score: <strong>{{formResult.overAllScore}}</strong></h3>
     </div>
   </div>
   <div *ngIf="isPageLoaded" class="col-sm-6 text-center offset-3">
     <ul class="list-group">
       <li *ngFor="let answer of formResult.fields" class="list-group-item">
-        {{answer.fieldName}}: <span class="text-primary">{{answer.score}}</span>
+        {{answer.fieldName}}: <span class="text-info">{{answer.score}}</span>
       </li>
     </ul>
   </div>

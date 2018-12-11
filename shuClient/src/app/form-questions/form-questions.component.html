@@ -3,7 +3,7 @@
 
   <div *ngIf="isPageLoaded" class="col-sm-12">
     <div *ngFor="let question of allQuestions" class="card text-center">
-      <div class="card-body">
+      <div class="card-body border-success">
         <h5 class="card-title"><strong>{{question.questionText}}</strong></h5>
         <div>
           <mat-radio-group [(ngModel)]="question.userScore">
@@ -14,6 +14,6 @@
     </div>
   </div>
   <div *ngIf="isPageLoaded" class="col-sm-12 pb-5">
-    <button type="button" class="btn btn-lg btn-danger btn-block" (click)="onSubmit()">Submit</button>
+    <button type="button" class="btn btn-lg btn-info btn-block" (click)="onSubmit()">Submit</button>
   </div>
 </div>
