@@ -4,10 +4,10 @@
   <div *ngIf="isPageLoaded" class="col-sm-12 text-center">
     <h3>Your overall score: {{formResult.overAllScore}}</h3>
   </div>
-  <div *ngIf="isPageLoaded" class="col-sm-12 text-center">
+  <div *ngIf="isPageLoaded" class="col-sm-6 text-center offset-3">
     <h3>Your answers to the questions:</h3>
-    <ul>
-      <li *ngFor="let answer of formResult.fields">
+    <ul class="list-group">
+      <li *ngFor="let answer of formResult.fields" class="list-group-item">
         {{answer.fieldName}}: <span class="text-danger">{{answer.score}}</span>
       </li>
     </ul>
