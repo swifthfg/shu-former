@@ -13,11 +13,13 @@ import { FormResultComponent } from './form-result/form-result.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatRadioModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './admin/login/login.component';
 
 const appRoutes: Routes = [
   {path: 'form', component: FormQuestionsComponent},
   {path: 'form-result', component: FormResultComponent},
   {path: 'admin', component: AdminComponent},
+  {path: 'admin/login', component: LoginComponent},
   {path: '**', redirectTo: 'form'},
 ];
 
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
     FormQuestionsComponent,
     FormResultComponent,
     AdminComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

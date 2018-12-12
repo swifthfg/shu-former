@@ -17,6 +17,14 @@ export class DataService {
     localStorage.setItem('shuToken', token);
   }
 
+  isUserAdmin() {
+    let adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      return true;
+    }
+    return false;
+  }
+
   isUserSubmittedFormBefore() {
     let token = this.getToken();
     if (token) {
