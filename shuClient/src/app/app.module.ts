@@ -12,11 +12,13 @@ import { FormQuestionsComponent } from './form-questions/form-questions.componen
 import { FormResultComponent } from './form-result/form-result.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatRadioModule} from '@angular/material';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   {path: 'form', component: FormQuestionsComponent},
   {path: 'form-result', component: FormResultComponent},
-  {path: '**', redirectTo: 'form'}
+  {path: 'admin', component: AdminComponent},
+  {path: '**', redirectTo: 'form'},
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     FormNavigationComponent,
     FormQuestionsComponent,
-    FormResultComponent
+    FormResultComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
