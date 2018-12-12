@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 const appRoutes: Routes = [
   {path: 'form', component: FormQuestionsComponent},
   {path: 'form-result', component: FormResultComponent},
+  {path: 'admin', component: AdminComponent},
   {path: '**', redirectTo: 'form'},
 ];
 
