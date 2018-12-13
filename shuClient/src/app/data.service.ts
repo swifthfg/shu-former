@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {RestService} from "./rest.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,14 @@ export class DataService {
   formResult: any = null;
   user: any = null;
 
-  constructor() { }
+  constructor(private rest: RestService, private router: Router) {}
 
   getToken() {
     return localStorage.getItem('shuToken');
+  }
+
+  getAdminToken() {
+    return localStorage.getItem('adminToken');
   }
 
   saveToken(token: string) {
@@ -34,4 +40,23 @@ export class DataService {
     }
     return false;
   }
+
+  async getInitialAppData() {
+    if (this.isUserAdmin()) {
+      try {
+        const data = await this.rest.get(this.accUrl + 'accounts/app-data');
+        if (data['success']) {
+          this.user = data['result']['user'];
+          console.log(data);
+        } else {
+          console.error(data);
+        }
+      } catch (error) {
+        alert(error.message);
+        console.error(error);
+        this.router.navigate(['admin', 'login']);
+      }
+    }
+  }
+
 }

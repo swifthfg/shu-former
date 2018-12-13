@@ -9,11 +9,13 @@ import {DataService} from "../data.service";
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private router: Router, private data: DataService) { }
+  constructor(private router: Router, public data: DataService) { }
 
   ngOnInit() {
     if (!this.data.isUserAdmin()) {
       this.router.navigate(['admin', 'login']);
+    } else {
+      this.data.getInitialAppData();
     }
   }
 

@@ -19,10 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   validate() {
-    if (!this.email || !this.password) {
-      return false;
-    }
-    return true;
+    return (this.email && this.password);
   }
 
   async login() {
@@ -50,6 +47,7 @@ export class LoginComponent implements OnInit {
     this.btnDisabled = false;
   }
 
-
-
+  onSubmit() {
+    this.login();
+  }
 }
