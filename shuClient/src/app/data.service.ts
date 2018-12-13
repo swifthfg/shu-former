@@ -50,7 +50,7 @@ export class DataService {
         if (data['success']) {
           this.user = data['result']['user'];
           this.questions = data['result']['questions'];
-          this.questions = data['result']['submissions'];
+          this.submissions = data['result']['submissions'];
         } else {
           console.error(data);
         }
