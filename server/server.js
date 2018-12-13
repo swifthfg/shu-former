@@ -19,8 +19,10 @@ app.use(morgan('dev'));
 app.use(cors());
 
 const formRoutes = require('./routes/form');
+const accountRoutes = require('./routes/account');
 
 app.use('/api/form', formRoutes);
+app.use('/api/accounts', accountRoutes);
 
 app.listen(config.port, (err) => {
     console.log("Listening " + config.port);
