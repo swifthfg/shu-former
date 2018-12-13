@@ -1,0 +1,30 @@
+<div *ngIf="data.user" class="row">
+  <div class="col-md-12 table-responsive">
+    <table class="table table-hover table-dark">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>ShuToken</th>
+        <th>CreatedAt</th>
+        <th>Fields</th>
+        <th>UserAgent</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let submission of data.submissions; let i = index">
+        <th>{{i + 1}}</th>
+        <td>{{submission.overAllScore}}</td>
+        <td>{{submission.shuToken}}</td>
+        <td>{{submission.createdAt}}</td>
+        <td>
+          <span *ngFor="let field of submission.fields" style="display: block">
+            {{field.fieldName}}::{{field.score}}
+          </span>
+        </td>
+        <td>{{submission.ipMeta}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
