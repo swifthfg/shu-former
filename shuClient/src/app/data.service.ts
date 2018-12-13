@@ -51,7 +51,6 @@ export class DataService {
           this.user = data['result']['user'];
           this.questions = data['result']['questions'];
           this.questions = data['result']['submissions'];
-          console.log(data);
         } else {
           console.error(data);
         }
