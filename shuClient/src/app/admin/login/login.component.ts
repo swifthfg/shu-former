@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
         );
         if (data['success']) {
           localStorage.setItem('adminToken', data['adminToken']);
-          this.data.user = data['result'];
           this.router.navigate(['admin']);
         } else {
           alert(data['message']);
