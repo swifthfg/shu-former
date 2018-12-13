@@ -91,7 +91,7 @@ router.get('/app-data',
                     } else {
                         res.send({
                             success: true,
-                            message: 'Submissions are fetched successfully',
+                            message: 'Data is successfully fetched',
                             result: {submissions: submissions,
                                      questions: allQuestions,
                                      user: {id:req.user.user._id, name: req.user.user.name, email: req.user.user.email}
