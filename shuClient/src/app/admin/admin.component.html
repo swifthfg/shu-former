@@ -1,9 +1,9 @@
 <div *ngIf="!data.user" class="loader"></div>
 <nav *ngIf="data.user" class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="'admin'">Admin Panel</a>
+  <a class="navbar-brand" >Admin Panel</a>
   <ul class="navbar-nav nav justify-content-center my-2 my-lg-0">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['admin', 'login']">Login</a>
+      <span class="text-info">Welcome {{data.user.name}}</span>
     </li>
   </ul>
 </nav>
