@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {DataService} from "../data.service";
 
 @Component({
@@ -8,7 +8,13 @@ import {DataService} from "../data.service";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  constructor(private router: Router, public data: DataService) { }
+  constructor(private router: Router, public data: DataService) {
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd && val.url === '/admin') {
+        this.data.getInitialAppData();
+      }
+    });
+  }
 
   ngOnInit() {
     if (!this.data.isUserAdmin()) {
@@ -16,6 +22,14 @@ export class AdminComponent implements OnInit {
     } else {
       this.data.getInitialAppData();
     }
+  }
+
+  logout() {
+    this.data.submissions = null;
+    this.data.questions = null;
+    this.data.user = null;
+    localStorage.removeItem('adminToken');
+    this.router.navigate(['admin', 'login']);
   }
 
 }
