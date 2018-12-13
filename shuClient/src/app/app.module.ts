@@ -16,12 +16,20 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './admin/login/login.component';
 import {AuthInterceptor} from "./auth-interceptor";
 import {JwtInterceptor} from "./jwt-interceptor";
+import { SubmissionsComponent } from './admin/submissions/submissions.component';
+import { QuestionsComponent } from './admin/questions/questions.component';
 
 const appRoutes: Routes = [
   {path: 'form', component: FormQuestionsComponent},
   {path: 'form-result', component: FormResultComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin/login', component: LoginComponent},
+  { path: 'admin',
+    component: AdminComponent,
+    children: [
+      {path: 'login', component: LoginComponent},
+      {path: 'submissions', component: SubmissionsComponent},
+      {path: 'questions', component: QuestionsComponent},
+    ]
+  },
   {path: '**', redirectTo: 'form'},
 ];
 
@@ -33,6 +41,8 @@ const appRoutes: Routes = [
     FormResultComponent,
     AdminComponent,
     LoginComponent,
+    SubmissionsComponent,
+    QuestionsComponent,
   ],
   imports: [
     BrowserModule,
