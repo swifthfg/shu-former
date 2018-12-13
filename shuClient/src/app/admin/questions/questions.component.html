@@ -1,3 +1,26 @@
-<p>
-  questions works!
-</p>
+<div *ngIf="data.user && data.questions" class="row">
+  <div class="col-md-12 table-responsive">
+    <table class="table table-hover table-dark">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>QuestionText</th>
+        <th>Description</th>
+        <th>Field Name</th>
+        <th>Max Score</th>
+        <th>CreatedAt</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let question of data.questions; let i = index">
+        <th>{{i + 1}}</th>
+        <td>{{question.questionText}}</td>
+        <td>{{question.description}}</td>
+        <td>{{question.fieldName}}</td>
+        <td>{{question.maxScore}}</td>
+        <td>{{question.createdAt}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
