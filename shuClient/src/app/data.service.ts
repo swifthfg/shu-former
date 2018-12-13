@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
   url: String = 'http://localhost:3031/api/form/';
+  accUrl: String = 'http://localhost:3031/api/accounts/';
   formResult: any = null;
+  user: any = null;
 
   constructor() { }
 
