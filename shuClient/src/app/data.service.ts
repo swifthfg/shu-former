@@ -10,6 +10,8 @@ export class DataService {
   accUrl: String = 'http://localhost:3031/api/accounts/';
   formResult: any = null;
   user: any = null;
+  questions: any = null;
+  submissions: any = null;
 
   constructor(private rest: RestService, private router: Router) {}
 
@@ -44,9 +46,11 @@ export class DataService {
   async getInitialAppData() {
     if (this.isUserAdmin()) {
       try {
-        const data = await this.rest.get(this.accUrl + 'accounts/app-data');
+        const data = await this.rest.get(this.accUrl + 'app-data');
         if (data['success']) {
           this.user = data['result']['user'];
+          this.questions = data['result']['questions'];
+          this.questions = data['result']['submissions'];
           console.log(data);
         } else {
           console.error(data);

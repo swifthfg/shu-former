@@ -8,7 +8,6 @@ import {DataService} from "../data.service";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
   constructor(private router: Router, public data: DataService) { }
 
   ngOnInit() {
