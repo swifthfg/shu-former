@@ -5,6 +5,8 @@ Dynamic form creator. Initially designed for securing home usage survey form. So
 It has client home page which contains questions and admin page that shows the submissions and the current questions.
 User can see its score following the submission of form.
 
+There exists extra precautions to avoid the resubmission of the form by the same person.
+
 Screenshots:
 ![client_page][clientpage]
 ![admin_panel][adminpanel]
